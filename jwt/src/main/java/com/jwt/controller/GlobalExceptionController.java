@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -40,5 +41,11 @@ public class GlobalExceptionController {
     public ResponseEntity<Object> handleRuntimeException(
             RuntimeException ex) {
         return ResponseEntity.internalServerError().body(ex.getMessage());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Object> handleAccessDeniedException(
+            RuntimeException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("El usuario no cuenta con los permisos necesarios para acceder a este recurso.");
     }
 }

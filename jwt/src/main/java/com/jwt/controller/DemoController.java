@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class DemoController {
 
     @PostMapping("/demo")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     public String welcome() {
         return "welcome";
     }

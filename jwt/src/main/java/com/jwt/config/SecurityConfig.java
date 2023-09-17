@@ -32,7 +32,6 @@ public class SecurityConfig {
                     .requestMatchers("/auth/**").permitAll()
                     .anyRequest().authenticated()
             )
-            // .formLogin(Customizer.withDefaults())
             .sessionManagement(sessionManager -> 
                 sessionManager
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
