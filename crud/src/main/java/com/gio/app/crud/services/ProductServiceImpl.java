@@ -52,9 +52,16 @@ public class ProductServiceImpl implements ProductService {
             p.setName(product.getName());
             p.setDescripcion(product.getDescripcion());
             p.setPrice(product.getPrice());
+            p.setSku(product.getSku());
             return Optional.of(productRepository.save(p));
         }
         return productOp;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existsBySku(String sku) {
+        return productRepository.existsBySku(sku);
     }
 
 }

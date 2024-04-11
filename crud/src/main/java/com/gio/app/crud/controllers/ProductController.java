@@ -47,7 +47,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
-        productValidation.validate(product, null);
+        productValidation.validate(product, null); 
         Product newProduct = productService.save(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }

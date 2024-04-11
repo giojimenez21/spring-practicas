@@ -1,5 +1,8 @@
 package com.gio.app.crud.entities;
 
+import com.gio.app.crud.validations.IsExistsDb;
+import com.gio.app.crud.validations.IsRequired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,6 +36,10 @@ public class Product {
     @NotNull
     private Integer price;
 
-    @NotBlank
+    @IsRequired 
     private String descripcion;
+
+    @IsExistsDb
+    @IsRequired
+    private String sku;
 }
